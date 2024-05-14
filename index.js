@@ -19,7 +19,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
 app.use(cors({
-    origin: ['https://food-app-frontend-9vra.vercel.app'],
+    origin: ['https://food-app-frontend-ecru.vercel.app'],
     credentials : true,
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
 
