@@ -18,12 +18,12 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
-// app.use(cors({
-//     origin: ['https://tate-treauser-back.vercel.app'],
-//     credentials : true,
-//     methods: ['GET', 'POST', 'PUT', 'DELETE'],
+app.use(cors({
+    origin: ['https://food-app-backend-api.vercel.app/'],
+    credentials : true,
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
 
-//   }));
+  }));
 
 app.use(cors());
 app.options("*", cors());
