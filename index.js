@@ -18,7 +18,7 @@ app.use(cookieParser());
 
 
 app.use(cors({
-    origin: 'https://food-app-frontend-ecru.vercel.app',
+    origin: 'https://food-app-frontend-9vra.vercel.app',
     credentials: true,
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'], 
 }));
