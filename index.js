@@ -1,11 +1,9 @@
 import express from 'express';
 import cookieParser from 'cookie-parser';
 import dotenv from 'dotenv';
-import path from 'path';
 import userRoutes from './routes/userRoutes.js';
 import connectDB from './config/db.js';
 import cors from 'cors';
-
 
 dotenv.config();
 const port = process.env.PORT || 5000;
@@ -18,20 +16,18 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
+
 app.use(cors({
-    origin: ['https://food-app-frontend-ecru.vercel.app'],
-    credentials : true,
-    methods: ['GET', 'POST', 'PUT', 'DELETE'],
-
-  }));
-
-app.use(cors());
-app.options("*", cors());
+    origin: 'https://food-app-frontend-ecru.vercel.app',
+    credentials: true,
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'], 
+}));
 
 app.use('/api/users', userRoutes);
-app.use('/', async (req, res) =>{
-    res.send("welcome");
-});
 
+
+app.use('/', async (req, res) => {
+    res.send("Welcome");
+});
 
 app.listen(port, () => console.log(`Server listening on ${port}`));
