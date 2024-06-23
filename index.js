@@ -27,7 +27,15 @@ app.use(cors({
     // methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'], 
 }));
 
+
 app.use('/api/users', userRoutes);
+const __dirname = path.resolve();
+app.use(express.static(path.join(__dirname, 'public')));
+
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'index.html'));
+});
+
 
 
 app.use('/', async (req, res) => {
