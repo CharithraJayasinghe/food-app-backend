@@ -64,8 +64,10 @@ const loginUser = asyncHandler(async (req, res) => {
             return;
     
         } else{
-            res.status(400).json({message : "Invalid"});
+            res.status(400).json({message : "Password Invalid"});
         }
+    }else{
+        res.status(400).json({message : "Email is Invalid"});
     }
 
 });
@@ -113,10 +115,11 @@ const updateCurrentUserProfile = asyncHandler(async (req, res) => {
 
         if(req.body.password){
             const salt = await bcrypt.genSalt(10);
-            const hashedPassword = await bcrypt.hash(passwords, salt);
-            user.password = hashedPassword;
+            const hashedPassword = await bcrypt.hash(req.body.password, salt);
+            user.passwords = hashedPassword;
         }
         const updatedUser = await user.save();
+        
 
         res.json({
             _id : updatedUser._id,
